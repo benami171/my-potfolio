@@ -6,7 +6,7 @@ import React from 'react';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Your Name | Computer Science Student',
+  title: 'Gal Ben Ami | Computer Science Student',
   description: 'Portfolio website showcasing my projects and skills as a Computer Science student',
 };
 
