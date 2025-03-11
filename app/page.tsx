@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import bridge_preview from '../public/images/bridge_preview.png';
 
 export default function Home() {
   return (
@@ -29,14 +30,20 @@ export default function Home() {
             Computer Science Student | Full-Stack Developer
           </p>
           <div className="flex justify-center gap-4">
-            <Link 
-              href="#projects" 
+            <Link
+              href="#projects"
               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
             >
               View My Projects
             </Link>
-            <Link 
-              href="#contact" 
+            <Link
+              href="#resume"
+              className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition"
+            >
+              Resume
+            </Link>
+            <Link
+              href="#contact"
               className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition"
             >
               Contact Me
@@ -46,7 +53,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20">
+      <section id="about" className="py-10">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
             About Me
@@ -103,9 +110,54 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Project 1 */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
+            {/* <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
               <div className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
                 <span className="text-gray-500 dark:text-gray-400">Website Project</span>
+              </div>
+
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                  Israel Bridge Federation
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  Developing a brand-new website (frontend & backend) to replace the old one, using Next.js, Prisma, Tailwind CSS and TypeScript. <span className="text-blue-300 italic">In progress</span>
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
+                    Next.js
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
+                  Prisma
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
+                    TypeScript
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
+                    Tailwind CSS
+                  </span>
+                </div>
+                <div className="flex gap-4">
+                  <a 
+                    href="#" 
+                    className="text-blue-600 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+
+                </div>
+              </div>
+            </div> */}
+
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
+              <div className="h-48 bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                <Image
+                  src={bridge_preview}
+                  alt="Israel Bridge Federation Website"
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
@@ -126,27 +178,19 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="flex gap-4">
-                  <a 
-                    href="#" 
+                  <a
+                    href="https://github.com/yourusername/bridge-federation"
                     className="text-blue-600 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     GitHub
                   </a>
-                  <a 
-                    href="#" 
-                    className="text-blue-600 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Live Demo
-                  </a>
                 </div>
               </div>
             </div>
 
-            {/* Project 2 */}
+            {/* Project 2
             <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
               <div className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
                 <span className="text-gray-500 dark:text-gray-400">Python Project</span>
@@ -178,20 +222,83 @@ export default function Home() {
                   >
                     GitHub
                   </a>
-                  <a 
-                    href="#" 
+                </div>
+              </div>
+            </div> */}
+            {/* Project 2 - With Code Snippet */}
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
+              <div className="h-48 bg-gray-800 overflow-hidden">
+                <div className="p-3 h-full overflow-hidden">
+                  <pre className="text-xs text-green-400 h-full overflow-hidden">
+                    <code>
+                      {`async def receive_data(self) -> List[bytes] | None:
+        """
+        1. receive data from the socket and divide it into packet and frames
+        2. if the packet is not SYN/ACK/SYN_ACK/FIN start measuring time
+        3. if the stream_id is not in the streams stats dictionary,add it
+        """
+        frames_received_counter = 0
+        while True:
+            received_data, address = self.sock.recvfrom(QUIC_PACKET.Max_size)
+            received_packet, received_frames = QUIC_PACKET.deserialize_data(received_data)
+
+            if received_packet.packet_flag not in (FLAGS.SYN, FLAGS.ACK,
+                                                   FLAGS.SYN_ACK, FLAGS.FIN):
+
+                frames_received_counter += len(received_frames)
+                # GOT THE FIRST PACKET OF THE SPECIFIC STREAM, START MEASURING TIME
+
+                if received_packet.packet_flag == FLAGS.FIRST_PACKET:
+                    if received_frames[0].stream_id not in self.streams_stats:
+                        self.streams_stats[received_frames[0].stream_id] = Stats(received_frames[0].stream_id, 0, 0, 0,
+                                                                                 time.time())
+                    if OVERALL_DATA not in self.connection_stats:
+                        self.connection_stats[OVERALL_DATA] = Stats(0, 0, 0, 0, time.time())
+
+                if len(received_frames) != 0:
+                    self.streams_stats[received_frames[0].stream_id].frames_amount += len(received_frames)
+                    self.connection_stats[OVERALL_DATA].frames_amount += len(received_frames)
+                # GOT THE LAST PACKET OF THE SPECIFIC STREAM, MEASURING END TIME
+                if received_packet.packet_flag == FLAGS.LAST_PACKET:
+                    self.streams_stats[received_frames[0].stream_id].time = time.time() - self.streams_stats[
+                        received_frames[0].stream_id].time`}
+                    </code>
+                  </pre>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                  QUIC Multi Streams
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  Asynchronous multi-stream QUIC functionality with dynamic frame management, leveraging asyncio for concurrent operations.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    Python
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    Asyncio
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    QUIC
+                  </span>
+                </div>
+                <div className="flex gap-4">
+                  <a
+                    href="https://github.com/yourusername/quic-multi-streams"
                     className="text-blue-600 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Live Demo
+                    GitHub
                   </a>
                 </div>
               </div>
             </div>
 
             {/* Project 3 */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
+            {/* <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
               <div className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
                 <span className="text-gray-500 dark:text-gray-400">C++ Project</span>
               </div>
@@ -222,13 +329,64 @@ export default function Home() {
                   >
                     GitHub
                   </a>
-                  <a 
-                    href="#" 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> */}
+            {/* Project 3 - With Architecture Diagram */}
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
+              <div className="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 230" className="h-full">
+                  {/* Simple architecture diagram */}
+                  <rect x="50" y="20" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
+                  <text x="110" y="50" fontSize="14" textAnchor="middle" fill="white">Client</text>
+
+                  <rect x="190" y="90" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
+                  <text x="250" y="120" fontSize="14" textAnchor="middle" fill="white">Leader Thread</text>
+
+                  <rect x="50" y="160" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
+                  <text x="110" y="190" fontSize="14" textAnchor="middle" fill="white">Follower 1</text>
+
+                  <rect x="190" y="160" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
+                  <text x="250" y="190" fontSize="14" textAnchor="middle" fill="white">Follower 2</text>
+
+                  <rect x="330" y="160" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
+                  <text x="390" y="190" fontSize="14" textAnchor="middle" fill="white">Follower 3</text>
+
+                  <line x1="110" y1="70" x2="200" y2="90" stroke="#60A5FA" strokeWidth="2" />
+                  <line x1="250" y1="140" x2="110" y2="160" stroke="#60A5FA" strokeWidth="2" />
+                  <line x1="250" y1="140" x2="250" y2="160" stroke="#60A5FA" strokeWidth="2" />
+                  <line x1="250" y1="140" x2="380" y2="160" stroke="#60A5FA" strokeWidth="2" />
+                </svg>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                  System Design Patterns
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  A multi-threaded server using Pipeline and Leader-Follower concurrency patterns to efficiently handle operations over TCP. Optimized performance and scalability with thread synchronization and resource management.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    C++
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    Multi-threading
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    TCP
+                  </span>
+                </div>
+                <div className="flex gap-4">
+                  <a
+                    href="https://github.com/yourusername/system-design-patterns"
                     className="text-blue-600 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Live Demo
+                    GitHub
                   </a>
                 </div>
               </div>
@@ -237,13 +395,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section */}
+      {/* Skills Section with Colorful Items */}
       <section id="skills" className="bg-gray-50 dark:bg-gray-800 py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
             Skills
           </h2>
-          
+
           <div className="max-w-4xl mx-auto">
             {/* Programming Languages */}
             <div className="mb-10">
@@ -251,46 +409,71 @@ export default function Home() {
                 Programming Languages
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {['C/C++', 'Java', 'Python', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'SQL', 'Shell'].map((skill) => (
-                  <div 
-                    key={skill}
-                    className="bg-white dark:bg-gray-900 p-4 rounded-lg text-center shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition"
+                {[
+{ name: 'C/C++', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+{ name: 'Java', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+{ name: 'Python', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+{ name: 'TypeScript', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+{ name: 'JavaScript', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+{ name: 'HTML', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+{ name: 'CSS', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+{ name: 'SQL', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+                ].map((skill) => (
+                  <div
+                    key={skill.name}
+                    className={`p-4 rounded-lg text-center shadow-sm border hover:shadow-md transition ${skill.color}`}
                   >
-                    <p className="text-gray-900 dark:text-white font-medium">{skill}</p>
+                    <p className="font-medium">{skill.name}</p>
                   </div>
                 ))}
               </div>
             </div>
-            
+
             {/* Frameworks & Libraries */}
             <div className="mb-10">
               <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
                 Frameworks & Libraries
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {['React', 'Next.js', 'Node.js', 'Symfony', 'Tailwind CSS', 'Prisma ORM', 'Doctrine ORM'].map((skill) => (
-                  <div 
-                    key={skill}
-                    className="bg-white dark:bg-gray-900 p-4 rounded-lg text-center shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition"
+                {[
+{ name: 'React', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+{ name: 'Next.js', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+{ name: 'Node.js', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+{ name: 'Symfony', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+{ name: 'Tailwind CSS', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+{ name: 'Prisma ORM', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+{ name: 'Doctrine ORM', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+                ].map((skill) => (
+                  <div
+                    key={skill.name}
+                    className={`p-4 rounded-lg text-center shadow-sm border hover:shadow-md transition ${skill.color}`}
                   >
-                    <p className="text-gray-900 dark:text-white font-medium">{skill}</p>
+                    <p className="font-medium">{skill.name}</p>
                   </div>
                 ))}
               </div>
             </div>
-            
+
             {/* Tools & Technologies */}
             <div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
                 Tools & Technologies
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {['Git', 'MongoDB', 'MySQL', 'Windows', 'Linux', 'TCP/IP', 'Multi-threading'].map((skill) => (
-                  <div 
-                    key={skill}
-                    className="bg-white dark:bg-gray-900 p-4 rounded-lg text-center shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition"
+                {[
+                  { name: 'Git', color: 'bg-blue-300 text-blue-900 border-blue-500' },
+                  { name: 'MongoDB', color: 'bg-blue-300 text-blue-900 border-blue-500' },
+                  { name: 'MySQL', color: 'bg-blue-300 text-blue-900 border-blue-500' },
+                  { name: 'Windows', color: 'bg-blue-300 text-blue-900 border-blue-500' },
+                  { name: 'Linux', color: 'bg-blue-300 text-blue-900 border-blue-500' },
+                  { name: 'TCP/IP', color: 'bg-blue-300 text-blue-900 border-blue-500' },
+                  { name: 'Multi-threading', color: 'bg-blue-300 text-blue-900 border-blue-500' }
+                ].map((skill) => (
+                  <div
+                    key={skill.name}
+                    className={`p-4 rounded-lg text-center shadow-sm border hover:shadow-md transition ${skill.color}`}
                   >
-                    <p className="text-gray-900 dark:text-white font-medium">{skill}</p>
+                    <p className="font-medium">{skill.name}</p>
                   </div>
                 ))}
               </div>
@@ -305,20 +488,20 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
             Resume
           </h2>
-          
+
           <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8 border border-gray-200 dark:border-gray-800">
             <div className="mb-8">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Gal Ben Ami</h3>
               <p className="text-lg text-gray-700 dark:text-gray-300">Computer Science Student</p>
             </div>
-            
+
             <div className="mb-8">
               <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Profile</h4>
               <p className="text-gray-700 dark:text-gray-300">
                 Motivated Computer Science student with a solid foundations in object-oriented programming, algorithms, and software development. Experienced in backend and frontend development. Available for full-time work.
               </p>
             </div>
-            
+
             <div className="mb-8">
               <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Education</h4>
               <div className="mb-4">
@@ -332,10 +515,10 @@ export default function Home() {
                 <p className="text-gray-700 dark:text-gray-300 mt-2">GPA: 85/100</p>
               </div>
             </div>
-            
+
             <div className="mb-8">
               <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Projects</h4>
-              
+
               <div className="mb-4">
                 <div className="flex justify-between items-start">
                   <h5 className="text-lg font-medium text-gray-900 dark:text-white">Israel Bridge Federation</h5>
@@ -345,14 +528,14 @@ export default function Home() {
                   Developing a brand-new website (frontend & backend) using Next.js, Tailwind CSS, and TypeScript.
                 </p>
               </div>
-              
+
               <div className="mb-4">
                 <h5 className="text-lg font-medium text-gray-900 dark:text-white">QUIC multi streams (Python)</h5>
                 <p className="text-gray-700 dark:text-gray-300 mt-1">
                   Asynchronous multi-stream QUIC functionality with dynamic frame management, leveraging asyncio for concurrent operations.
                 </p>
               </div>
-              
+
               <div>
                 <h5 className="text-lg font-medium text-gray-900 dark:text-white">System Design Patterns (C++)</h5>
                 <p className="text-gray-700 dark:text-gray-300 mt-1">
@@ -360,7 +543,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            
+
             <div className="mb-8">
               <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Technical Skills</h4>
               <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
@@ -371,13 +554,11 @@ export default function Home() {
                 <li>Git, Prisma ORM, Doctrine ORM</li>
               </ul>
             </div>
-            
+
             <div className="flex justify-center">
-              <a 
-                href="#" 
+              <a
+                href="/api/download-resume"
                 className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center gap-2"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -395,33 +576,33 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
             Get In Touch
           </h2>
-          
+
           <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8 border border-gray-200 dark:border-gray-800">
             <div className="flex flex-col gap-6">
               <div className="flex items-center gap-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a 
-                  href="tel:050-958-4324" 
+                <a
+                  href="tel:050-958-4324"
                   className="text-blue-600 hover:text-blue-700 transition"
                 >
                   050-958-4324
                 </a>
               </div>
-              
+
               <div className="flex items-center gap-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a 
-                  href="mailto:benami171@gmail.com" 
+                <a
+                  href="mailto:benami171@gmail.com"
                   className="text-blue-600 hover:text-blue-700 transition"
                 >
                   benami171@gmail.com
                 </a>
               </div>
-              
+
               <div className="flex items-center gap-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -431,36 +612,36 @@ export default function Home() {
                   Petah Tikva, Israel
                 </span>
               </div>
-              
+
               <div className="flex items-center gap-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
-                <a 
-                  href="https://linkedin.com/in/LinkedIn" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://linkedin.com/in/LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-700 transition"
                 >
                   LinkedIn
                 </a>
               </div>
-              
+
               <div className="flex items-center gap-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
-                <a 
-                  href="https://github.com/Github" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://github.com/Github"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-700 transition"
                 >
                   Github
                 </a>
               </div>
             </div>
-            
+
             <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
               <p className="text-center text-gray-600 dark:text-gray-400">
                 Thank you for visiting my portfolio! I'm excited about the opportunity to contribute to your team.
@@ -469,7 +650,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
       {/* Footer */}
       <footer className="bg-gray-100 dark:bg-gray-800 py-6">
         <div className="container mx-auto px-4">
