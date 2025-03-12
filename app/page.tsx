@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import bridge_preview from '../public/images/bridge_preview.png';
+import ml_screenshot from '../public/images/ml_screenshot.png';
+import netcat_screenshot from '../public/images/netcat_screenshot.png';
 
 export default function Home() {
   return (
@@ -14,7 +16,6 @@ export default function Home() {
             <Link href="#education" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Education</Link>
             <Link href="#projects" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Projects</Link>
             <Link href="#skills" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Skills</Link>
-            <Link href="#resume" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Resume</Link>
             <Link href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Contact</Link>
           </div>
         </div>
@@ -32,19 +33,46 @@ export default function Home() {
           <div className="flex justify-center gap-4">
             <Link
               href="#projects"
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+              className="
+              bg-gradient-to-r from-blue-600 to-indigo-600
+              text-white font-semibold
+              px-6 py-3
+              rounded-lg
+              shadow
+              hover:shadow-lg
+              transform transition-all duration-200
+              hover:-translate-y-1
+            "
             >
-              View My Projects
+              My Projects
             </Link>
             <Link
               href="#resume"
-              className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition"
+              className="
+              bg-gradient-to-r from-blue-600 to-indigo-600
+              text-white font-semibold
+              px-6 py-3
+              rounded-lg
+              shadow
+              hover:shadow-lg
+              transform transition-all duration-200
+              hover:-translate-y-1
+            "
             >
               Resume
             </Link>
             <Link
               href="#contact"
-              className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition"
+              className="
+              bg-gradient-to-r from-blue-600 to-indigo-600
+              text-white font-semibold
+              px-6 py-3
+              rounded-lg
+              shadow
+              hover:shadow-lg
+              transform transition-all duration-200
+              hover:-translate-y-1
+            "
             >
               Contact Me
             </Link>
@@ -110,46 +138,6 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Project 1 */}
-            {/* <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                <span className="text-gray-500 dark:text-gray-400">Website Project</span>
-              </div>
-
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                  Israel Bridge Federation
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Developing a brand-new website (frontend & backend) to replace the old one, using Next.js, Prisma, Tailwind CSS and TypeScript. <span className="text-blue-300 italic">In progress</span>
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
-                    Next.js
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
-                  Prisma
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
-                    TypeScript
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
-                    Tailwind CSS
-                  </span>
-                </div>
-                <div className="flex gap-4">
-                  <a 
-                    href="#" 
-                    className="text-blue-600 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
-
-                </div>
-              </div>
-            </div> */}
-
             <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
               <div className="h-48 bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
                 <Image
@@ -164,11 +152,13 @@ export default function Home() {
                   Israel Bridge Federation
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Developing a brand-new website (frontend & backend) using Next.js, Tailwind CSS, and TypeScript. <span className="text-blue-600 italic">Currently in progress</span>
-                </p>
+                  Building a brand-new web application for the IBF from scratch, using Next.js, TypeScript, Tailwind CSS, and Prisma. Replacing their outdated system, the project emphasizes accessibility, user-friendliness, secure payments, membership management, and an advanced rating system.                </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
                     Next.js
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    Prisma
                   </span>
                   <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
                     TypeScript
@@ -178,8 +168,60 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="flex gap-4">
+                  <span className="text-blue-600 italic">Currently in progress</span>
+                </div>
+              </div>
+            </div>
+            {/* Project 3 - With Architecture Diagram */}
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
+              <div className="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 230" className="h-full">
+                  {/* Simple architecture diagram */}
+                  <rect x="50" y="20" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
+                  <text x="110" y="50" fontSize="14" textAnchor="middle" fill="white">Client</text>
+
+                  <rect x="190" y="90" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
+                  <text x="250" y="120" fontSize="14" textAnchor="middle" fill="white">Leader Thread</text>
+
+                  <rect x="50" y="160" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
+                  <text x="110" y="190" fontSize="14" textAnchor="middle" fill="white">Follower 1</text>
+
+                  <rect x="190" y="160" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
+                  <text x="250" y="190" fontSize="14" textAnchor="middle" fill="white">Follower 2</text>
+
+                  <rect x="330" y="160" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
+                  <text x="390" y="190" fontSize="14" textAnchor="middle" fill="white">Follower 3</text>
+
+                  <line x1="110" y1="70" x2="200" y2="90" stroke="#60A5FA" strokeWidth="2" />
+                  <line x1="250" y1="140" x2="110" y2="160" stroke="#60A5FA" strokeWidth="2" />
+                  <line x1="250" y1="140" x2="250" y2="160" stroke="#60A5FA" strokeWidth="2" />
+                  <line x1="250" y1="140" x2="380" y2="160" stroke="#60A5FA" strokeWidth="2" />
+                </svg>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                  System Design Patterns
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  A multi-threaded server using Pipeline and Leader-Follower concurrency patterns to efficiently handle operations over TCP. Optimized performance and scalability with thread synchronization and resource management.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    C++
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    Linux
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    Multi-threading
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    TCP
+                  </span>
+                </div>
+                <div className="flex gap-4">
                   <a
-                    href="https://github.com/yourusername/bridge-federation"
+                    href="https://github.com/benami171/Pipeline_Leader-follower"
                     className="text-blue-600 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -189,33 +231,44 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
-            {/* Project 2
+            {/* Project 3 Netcat clone */}
             <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                <span className="text-gray-500 dark:text-gray-400">Python Project</span>
+              <div className="h-48 bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                <Image
+                  src={netcat_screenshot}
+                  alt="Netcat Clone"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                  QUIC Multi Streams
+                  Netcat Clone
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Asynchronous multi-stream QUIC functionality with dynamic frame management, leveraging asyncio for concurrent operations.
+                  A custom netcat-like tool that opens clients and servers over TCP, UDP, and UNIX domain sockets.
+                  It reroutes standard input/output based on flags and even includes a Tic-Tac-Toe game you can play against the computer, showcasing how versatile network communication can be across different protocols.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                    Python
+                    C++
                   </span>
                   <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                    Asyncio
+                    Linux
                   </span>
                   <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                    QUIC
+                    TCP
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    UDP
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    UNIX-Sockets
                   </span>
                 </div>
                 <div className="flex gap-4">
-                  <a 
-                    href="#" 
+                  <a
+                    href="https://github.com/benami171/os_exe2/tree/master"
                     className="text-blue-600 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -224,8 +277,51 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-            </div> */}
-            {/* Project 2 - With Code Snippet */}
+            </div>
+            {/* Project 2 - ML - Text Classification */}
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
+              <div className="h-48 bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                <Image
+                  src={ml_screenshot}
+                  alt="ML - Text Classification"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                  ML - Text Classification
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  Using the 20 Newsgroups dataset, investigating the performance of various machine learning algorithms for text classification, and how does different dimensionality reduction techniques affect the results.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    Python
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    Sklearn
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    Matplotlib
+                  </span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                    Pandas
+                  </span>
+                </div>
+                <div className="flex gap-4">
+                  <a
+                    href="https://github.com/benami171/ML_FinalProject/tree/main"
+                    className="text-blue-600 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* Project 4 - With Code Snippet */}
             <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
               <div className="h-48 bg-gray-800 overflow-hidden">
                 <div className="p-3 h-full overflow-hidden">
@@ -286,7 +382,7 @@ export default function Home() {
                 </div>
                 <div className="flex gap-4">
                   <a
-                    href="https://github.com/yourusername/quic-multi-streams"
+                    href="https://github.com/benami171/QUIC_Multi_Streams"
                     className="text-blue-600 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -297,100 +393,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Project 3 */}
-            {/* <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                <span className="text-gray-500 dark:text-gray-400">C++ Project</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                  System Design Patterns
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  A multi-threaded server using Pipeline and Leader-Follower concurrency patterns to efficiently handle operations over TCP. Optimized performance and scalability with thread synchronization and resource management.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                    C++
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                    Multi-threading
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                    TCP
-                  </span>
-                </div>
-                <div className="flex gap-4">
-                  <a 
-                    href="#" 
-                    className="text-blue-600 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-            {/* Project 3 - With Architecture Diagram */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
-              <div className="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center p-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 230" className="h-full">
-                  {/* Simple architecture diagram */}
-                  <rect x="50" y="20" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
-                  <text x="110" y="50" fontSize="14" textAnchor="middle" fill="white">Client</text>
-
-                  <rect x="190" y="90" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
-                  <text x="250" y="120" fontSize="14" textAnchor="middle" fill="white">Leader Thread</text>
-
-                  <rect x="50" y="160" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
-                  <text x="110" y="190" fontSize="14" textAnchor="middle" fill="white">Follower 1</text>
-
-                  <rect x="190" y="160" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
-                  <text x="250" y="190" fontSize="14" textAnchor="middle" fill="white">Follower 2</text>
-
-                  <rect x="330" y="160" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
-                  <text x="390" y="190" fontSize="14" textAnchor="middle" fill="white">Follower 3</text>
-
-                  <line x1="110" y1="70" x2="200" y2="90" stroke="#60A5FA" strokeWidth="2" />
-                  <line x1="250" y1="140" x2="110" y2="160" stroke="#60A5FA" strokeWidth="2" />
-                  <line x1="250" y1="140" x2="250" y2="160" stroke="#60A5FA" strokeWidth="2" />
-                  <line x1="250" y1="140" x2="380" y2="160" stroke="#60A5FA" strokeWidth="2" />
-                </svg>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                  System Design Patterns
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  A multi-threaded server using Pipeline and Leader-Follower concurrency patterns to efficiently handle operations over TCP. Optimized performance and scalability with thread synchronization and resource management.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                    C++
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                    Multi-threading
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                    TCP
-                  </span>
-                </div>
-                <div className="flex gap-4">
-                  <a
-                    href="https://github.com/yourusername/system-design-patterns"
-                    className="text-blue-600 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -410,14 +412,14 @@ export default function Home() {
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {[
-{ name: 'C/C++', color: 'bg-blue-100 text-blue-700 border-blue-300' },
-{ name: 'Java', color: 'bg-blue-100 text-blue-700 border-blue-300' },
-{ name: 'Python', color: 'bg-blue-100 text-blue-700 border-blue-300' },
-{ name: 'TypeScript', color: 'bg-blue-100 text-blue-700 border-blue-300' },
-{ name: 'JavaScript', color: 'bg-blue-100 text-blue-700 border-blue-300' },
-{ name: 'HTML', color: 'bg-blue-100 text-blue-700 border-blue-300' },
-{ name: 'CSS', color: 'bg-blue-100 text-blue-700 border-blue-300' },
-{ name: 'SQL', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+                  { name: 'C/C++', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+                  { name: 'Java', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+                  { name: 'Python', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+                  { name: 'TypeScript', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+                  { name: 'JavaScript', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+                  { name: 'HTML', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+                  { name: 'CSS', color: 'bg-blue-100 text-blue-700 border-blue-300' },
+                  { name: 'SQL', color: 'bg-blue-100 text-blue-700 border-blue-300' },
                 ].map((skill) => (
                   <div
                     key={skill.name}
@@ -436,13 +438,13 @@ export default function Home() {
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {[
-{ name: 'React', color: 'bg-blue-200 text-blue-800 border-blue-400' },
-{ name: 'Next.js', color: 'bg-blue-200 text-blue-800 border-blue-400' },
-{ name: 'Node.js', color: 'bg-blue-200 text-blue-800 border-blue-400' },
-{ name: 'Symfony', color: 'bg-blue-200 text-blue-800 border-blue-400' },
-{ name: 'Tailwind CSS', color: 'bg-blue-200 text-blue-800 border-blue-400' },
-{ name: 'Prisma ORM', color: 'bg-blue-200 text-blue-800 border-blue-400' },
-{ name: 'Doctrine ORM', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+                  { name: 'React', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+                  { name: 'Next.js', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+                  { name: 'Node.js', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+                  { name: 'Symfony', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+                  { name: 'Tailwind CSS', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+                  { name: 'Prisma ORM', color: 'bg-blue-200 text-blue-800 border-blue-400' },
+                  { name: 'Doctrine ORM', color: 'bg-blue-200 text-blue-800 border-blue-400' },
                 ].map((skill) => (
                   <div
                     key={skill.name}
@@ -525,7 +527,7 @@ export default function Home() {
                   <p className="text-blue-600 italic">Currently in progress</p>
                 </div>
                 <p className="text-gray-700 dark:text-gray-300 mt-1">
-                  Developing a brand-new website (frontend & backend) using Next.js, Tailwind CSS, and TypeScript.
+                  Developing a brand-new website (frontend & backend) for IBF, using Next.js,Prisma, Tailwind CSS, and TypeScript.
                 </p>
               </div>
 
@@ -618,7 +620,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
                 <a
-                  href="https://linkedin.com/in/LinkedIn"
+                  href="https://www.linkedin.com/in/gal1-ben7-ami1/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-700 transition"
@@ -632,7 +634,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
                 <a
-                  href="https://github.com/Github"
+                  href="https://github.com/benami171"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-700 transition"
