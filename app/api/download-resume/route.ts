@@ -1,19 +1,28 @@
-import { NextRequest, NextResponse } from 'next/server';
+// app/api/download-resume/route.ts
+import { NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
 
-export async function GET(req: NextRequest) {
-  // 1. Build the absolute path to your PDF in the public folder:
-  const filePath = path.join(process.cwd(), 'public', 'Gal Ben Ami - Resume.pdf');
+// Force the Node.js runtime so fs is allowed:
+export const runtime = 'nodejs';
 
-  // 2. Read the file as a Buffer
-  const fileBuffer = fs.readFileSync(filePath);
+export async function GET() {
+  try {
+    // 1. Path to the PDF
+    const filePath = path.join(process.cwd(), 'public', 'Gal Ben Ami - Resume.pdf');
 
-  // 3. Return the file in the response with appropriate headers
-  return new NextResponse(fileBuffer, {
-    headers: {
-      'Content-Type': 'application/pdf',
-      'Content-Disposition': 'attachment; filename="Gal Ben Ami - Resume.pdf"',
-    },
-  });
+    // 2. Read the file into a buffer
+    const fileBuffer = fs.readFileSync(filePath);
+
+    // 3. Return the file in the response with download headers
+    return new NextResponse(fileBuffer, {
+      headers: {
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': 'attachment; filename="Gal Ben Ami - Resume.pdf"',
+      },
+    });
+  } catch (err) {
+    console.error('File not found or another error:', err);
+    return new NextResponse('File not found', { status: 404 });
+  }
 }

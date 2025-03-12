@@ -1,7 +1,7 @@
 "use client";
 
-import Image from 'next/image';
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import bridge_preview from '../public/images/bridge_preview.png';
 import ml_screenshot from '../public/images/ml_screenshot.png';
