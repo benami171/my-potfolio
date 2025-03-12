@@ -1,10 +1,17 @@
+"use client";
+
 import Image from 'next/image';
+import { useState } from 'react';
 import Link from 'next/link';
 import bridge_preview from '../public/images/bridge_preview.png';
 import ml_screenshot from '../public/images/ml_screenshot.png';
 import netcat_screenshot from '../public/images/netcat_screenshot.png';
 
 export default function Home() {
+
+  const [isResumeExpanded, setIsResumeExpanded] = useState<boolean>(false);
+  const toggleResume = () => setIsResumeExpanded(prev => !prev);
+
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
       {/* Navigation */}
@@ -40,7 +47,7 @@ export default function Home() {
               rounded-lg
               shadow
               hover:shadow-lg
-              transform transition-all duration-200
+              transform transition-all duration-300 ease-in-out
               hover:-translate-y-1
             "
             >
@@ -81,14 +88,14 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-10">
+      <section id="about" className="py-14">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
             About Me
           </h2>
           <div className="max-w-3xl mx-auto">
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-            Motivated Computer Science student with a solid foundation in object-oriented programming, algorithms, and software development. Experienced in full-stack development. Available for full-time work.            </p>
+              Motivated Computer Science student with a solid foundation in object-oriented programming, algorithms, and software development. Experienced in full-stack development. Available for full-time work.            </p>
             <p className="text-lg text-gray-700 dark:text-gray-300">
               I'm passionate about building efficient, scalable applications and continuously expanding my knowledge in various programming languages and frameworks. I enjoy tackling complex problems and creating elegant solutions.
             </p>
@@ -137,7 +144,10 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Project 1 */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border
+             border-gray-200 
+             dark:border-gray-800 
+             ">
               <div className="h-48 bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
                 <Image
                   src={bridge_preview}
@@ -486,92 +496,136 @@ export default function Home() {
       {/* Resume Section */}
       <section id="resume" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-bold text-center mb-2 text-gray-900 dark:text-white">
             Resume
           </h2>
+          {/* state that its a short version */}
+          <span className="text-gray-600 dark:text-gray-300 text-center block mb-8">
+            This is a short version of my resume. Click the button below to download the full resume.
+          </span>
 
-          <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8 border border-gray-200 dark:border-gray-800">
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Gal Ben Ami</h3>
-              <p className="text-lg text-gray-700 dark:text-gray-300">Computer Science Student</p>
-            </div>
-
-            <div className="mb-8">
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Profile</h4>
-              <p className="text-gray-700 dark:text-gray-300">
-              Motivated Computer Science student with a solid foundation in object-oriented programming, algorithms, and software development. Experienced in full-stack development. Available for full-time work.
-              </p>
-            </div>
-
-            <div className="mb-8">
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Education</h4>
-              <div className="mb-4">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h5 className="text-lg font-medium text-gray-900 dark:text-white">Bachelor of Science in Computer Science</h5>
-                    <p className="text-gray-700 dark:text-gray-300">Ariel University</p>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-400">2022 - 2026</p>
+          <div className="max-w-4xl mx-auto ">
+            <div
+              className={`bg-white dark:bg-blue-950 rounded-lg shadow-lg border border-gray-200 dark:border-gray-800 transition-all duration-500 ease-in-out ${isResumeExpanded ? 'p-8' : 'p-8'
+                }`}
+            >
+              {/* Resume Header - Always visible */}
+              <div className="flex justify-between items-center mb-6">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Gal Ben Ami</h3>
+                  <p className="text-lg text-gray-700 dark:text-gray-300">Computer Science Student</p>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 mt-2">GPA: 85/100</p>
-              </div>
-            </div>
 
-            <div className="mb-8">
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Projects</h4>
-
-              <div className="mb-4">
-                <div className="flex justify-between items-start">
-                  <h5 className="text-lg font-medium text-gray-900 dark:text-white">Israel Bridge Federation</h5>
-                  <p className="text-blue-600 italic">Currently in progress</p>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 mt-1">
-                Developing IBF’s brand-new website (frontend & backend) using Next.js, Prisma, Tailwind CSS, and TypeScript. 
-                </p>
+                <a
+                  href="/api/download-resume"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center gap-2"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Download Full Resume
+                </a>
               </div>
 
-              <div className="mb-4">
-                <h5 className="text-lg font-medium text-gray-900 dark:text-white">QUIC multi streams (Python)</h5>
-                <p className="text-gray-700 dark:text-gray-300 mt-1">
-                  Asynchronous multi-stream QUIC functionality with dynamic frame management, leveraging asyncio for concurrent operations.
-                </p>
-              </div>
-
-              <div>
-                <h5 className="text-lg font-medium text-gray-900 dark:text-white">System Design Patterns (C++)</h5>
-                <p className="text-gray-700 dark:text-gray-300 mt-1">
-                  A multi-threaded server using Pipeline and Leader-Follower concurrency patterns to efficiently handle operations over TCP. Optimized performance and scalability with thread synchronization and resource management.
-                </p>
-              </div>
-            </div>
-
-            <div className="mb-8">
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Technical Skills</h4>
-              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
-                <li>C/C++, Java, Python, Shell, TypeScript, CSS, HTML, SQL</li>
-                <li>MongoDB, MySQL</li>
-                <li>React, Next.js, Node.js, Symfony</li>
-                <li>Windows, Linux</li>
-                <li>Git, Prisma ORM, Doctrine ORM</li>
-              </ul>
-            </div>
-
-            <div className="flex justify-center">
-              <a
-                href="/api/download-resume"
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center gap-2"
+              {/* Clickable Preview Area */}
+              <div
+                onClick={toggleResume}
+                className={`relative overflow-hidden transition-all duration-500 ease-in-out cursor-pointer ${isResumeExpanded ? 'max-h-[2000px]' : 'max-h-40'
+                  }`}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Download Full Resume
-              </a>
+                {/* Resume Content */}
+                <div className="mb-8">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Profile</h4>
+                  <p className="text-gray-700 dark:text-gray-300">
+                    Motivated Computer Science student with a solid foundation in object-oriented programming, algorithms, and software development. Experienced in full-stack development. Available for full-time work.
+                  </p>
+                </div>
+
+                <div className="mb-8">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Education</h4>
+                  <div className="mb-4">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h5 className="text-lg font-medium text-gray-900 dark:text-white">Bachelor of Science in Computer Science</h5>
+                        <p className="text-gray-700 dark:text-gray-300">Ariel University</p>
+                      </div>
+                      <p className="text-gray-600 dark:text-gray-400">2022 - 2026</p>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300 mt-2">GPA: 85/100</p>
+                  </div>
+                </div>
+
+                <div className="mb-8">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Projects</h4>
+
+                  <div className="mb-4">
+                    <div className="flex justify-between items-start">
+                      <h5 className="text-lg font-medium text-gray-900 dark:text-white">Israel Bridge Federation</h5>
+                      <p className="text-blue-600 italic">Currently in progress</p>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300 mt-1">
+                      Developing IBF's brand-new website (frontend & backend) using Next.js, Prisma, Tailwind CSS, and TypeScript.
+                    </p>
+                  </div>
+
+                  <div className="mb-4">
+                    <h5 className="text-lg font-medium text-gray-900 dark:text-white">QUIC multi streams (Python)</h5>
+                    <p className="text-gray-700 dark:text-gray-300 mt-1">
+                      Asynchronous multi-stream QUIC functionality with dynamic frame management, leveraging asyncio for concurrent operations.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h5 className="text-lg font-medium text-gray-900 dark:text-white">System Design Patterns (C++)</h5>
+                    <p className="text-gray-700 dark:text-gray-300 mt-1">
+                      A multi-threaded server using Pipeline and Leader-Follower concurrency patterns to efficiently handle operations over TCP. Optimized performance and scalability with thread synchronization and resource management.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mb-8">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Technical Skills</h4>
+                  <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
+                    <li>C/C++, Java, Python, Shell, TypeScript, CSS, HTML, SQL</li>
+                    <li>MongoDB, MySQL</li>
+                    <li>React, Next.js, Node.js, Symfony</li>
+                    <li>Windows, Linux</li>
+                    <li>Git, Prisma ORM, Doctrine ORM</li>
+                  </ul>
+                </div>
+
+                {/* Gradient Overlay when closed */}
+                {!isResumeExpanded && (
+                  <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white dark:from-blue-950 to-transparent flex items-end justify-center">
+                    <button className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                      Click to Expand
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Collapse button when expanded */}
+              {isResumeExpanded && (
+                <div className="flex justify-center mt-2">
+                  <button
+                    onClick={toggleResume}
+                    className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition flex items-center gap-2"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                    </svg>
+                    Collapse Resume
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </section>
-
-      {/* Contact Section */}
       <section id="contact" className="py-20">
         <div className="container mx-auto px-4 max-w-3xl">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
@@ -645,7 +699,7 @@ export default function Home() {
 
             <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
               <p className="text-center text-gray-600 dark:text-gray-400">
-                Thank you for visiting my portfolio! I'm excited about the opportunity to contribute to your team.
+                Thank you for visiting my website!
               </p>
             </div>
           </div>
