@@ -88,8 +88,7 @@ export default function Home() {
           </h2>
           <div className="max-w-3xl mx-auto">
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-              Motivated Computer Science student with a solid foundation in object-oriented programming, algorithms, and software development. Experienced in backend and frontend development. Available for full-time work.
-            </p>
+            Motivated Computer Science student with a solid foundation in object-oriented programming, algorithms, and software development. Experienced in full-stack development. Available for full-time work.            </p>
             <p className="text-lg text-gray-700 dark:text-gray-300">
               I'm passionate about building efficient, scalable applications and continuously expanding my knowledge in various programming languages and frameworks. I enjoy tackling complex problems and creating elegant solutions.
             </p>
@@ -500,7 +499,7 @@ export default function Home() {
             <div className="mb-8">
               <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Profile</h4>
               <p className="text-gray-700 dark:text-gray-300">
-                Motivated Computer Science student with a solid foundations in object-oriented programming, algorithms, and software development. Experienced in backend and frontend development. Available for full-time work.
+              Motivated Computer Science student with a solid foundation in object-oriented programming, algorithms, and software development. Experienced in full-stack development. Available for full-time work.
               </p>
             </div>
 
@@ -527,7 +526,7 @@ export default function Home() {
                   <p className="text-blue-600 italic">Currently in progress</p>
                 </div>
                 <p className="text-gray-700 dark:text-gray-300 mt-1">
-                  Developing a brand-new website (frontend & backend) for IBF, using Next.js,Prisma, Tailwind CSS, and TypeScript.
+                Developing IBF’s brand-new website (frontend & backend) using Next.js, Prisma, Tailwind CSS, and TypeScript. 
                 </p>
               </div>
 
