@@ -517,7 +517,7 @@ export default function Home() {
                 </div>
 
                 <a
-                  href="/api/download-resume"
+                  href="/api/download-resume/"
                   className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center gap-2"
                   onClick={(e) => e.stopPropagation()}
                 >
