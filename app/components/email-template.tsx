@@ -1,4 +1,3 @@
-import {Resend} from 'resend'
 import * as React from 'react';
 
 interface EmailTemplateProps {
