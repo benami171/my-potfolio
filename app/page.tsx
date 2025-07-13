@@ -29,12 +29,12 @@ export default function Home() {
         <div className="container mx-auto px-4 flex justify-between items-center">
           <span className="text-xl font-bold text-blue-600">Gal Ben Ami</span>
           <div className="flex items-center gap-6">
+            <ModeToggle />
             <Link href="#about" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">About</Link>
             <Link href="#education" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Education</Link>
             <Link href="#projects" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Projects</Link>
             <Link href="#skills" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Skills</Link>
             <Link href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Contact</Link>
-            <ModeToggle />
           </div>
         </div>
       </nav>
