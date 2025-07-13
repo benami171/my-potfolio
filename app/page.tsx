@@ -14,30 +14,95 @@ import {
   PhoneIcon,
   ChevronDownIcon,
   ChevronUpIcon,
-  DocumentArrowDownIcon
+  DocumentArrowDownIcon,
+  Bars3Icon,
+  XMarkIcon
 } from '@heroicons/react/24/outline'
 import { ModeToggle } from './components/shared/ui/ModeToggle/ModeToggle'
 
+const NAV_ITEMS = [
+  { href: "#about", label: "About" },
+  { href: "#education", label: "Education" },
+  { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
+  { href: "#contact", label: "Contact" },
+];
+
+type NavLinksProps = {
+  mobile?: boolean;
+  onItemClick?: () => void;
+};
+
+function NavLinks({ mobile = false, onItemClick }: NavLinksProps) {
+  // if mobile, we want vertical spacing and to close menu on click
+  const baseClasses = "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500";
+  const mobileClasses = mobile ? "py-2" : "";
+
+  return (
+    <>
+      {NAV_ITEMS.map(({ href, label }) => (
+        <Link
+          key={href}
+          href={href}
+          className={`${baseClasses} ${mobileClasses}`}
+          onClick={onItemClick}
+        >
+          {label}
+        </Link>
+      ))}
+    </>
+  );
+}
+
 export default function Home() {
   const [isResumeExpanded, setIsResumeExpanded] = useState<boolean>(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const toggleResume = () => setIsResumeExpanded(prev => !prev);
+  const toggleMobileMenu = () => setIsMobileMenuOpen(prev => !prev);
 
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
-      {/* Navigation */}
       <nav className="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-10 py-4 border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <span className="text-xl font-bold text-blue-600">Gal Ben Ami</span>
-          <div className="flex items-center gap-6">
+          {/* site title */}
+          <span className="text-xl font-bold text-blue-600 hidden sm:block">
+            Gal Ben Ami
+          </span>
+
+          {/* desktop nav */}
+          <div className="hidden md:flex items-center gap-6">
             <ModeToggle />
-            <Link href="#about" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">About</Link>
-            <Link href="#education" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Education</Link>
-            <Link href="#projects" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Projects</Link>
-            <Link href="#skills" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Skills</Link>
-            <Link href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Contact</Link>
+            <NavLinks />
+          </div>
+
+          {/* Mobile Menu Button and Theme Toggle */}
+          <div className="flex md:hidden items-center gap-4">
+            <ModeToggle />
+            <button
+              onClick={toggleMobileMenu}
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500"
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? (
+                <XMarkIcon className="h-6 w-6" />
+              ) : (
+                <Bars3Icon className="h-6 w-6" />
+              )}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+            <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+              <NavLinks mobile onItemClick={() => setIsMobileMenuOpen(false)} />
+            </div>
+          </div>
+        )}
       </nav>
+
+
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 pt-32 pb-20">
@@ -586,7 +651,7 @@ export default function Home() {
                 {!isResumeExpanded && (
                   <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white dark:from-blue-950 to-transparent flex items-end justify-center">
                     <button className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition flex items-center gap-2">
-                    <ChevronDownIcon className="h-5 w-5" />
+                      <ChevronDownIcon className="h-5 w-5" />
                     </button>
                   </div>
                 )}
@@ -599,7 +664,7 @@ export default function Home() {
                     onClick={toggleResume}
                     className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition flex items-center gap-2"
                   >
-                  <ChevronUpIcon className="h-5 w-5" />
+                    <ChevronUpIcon className="h-5 w-5" />
                   </button>
                 </div>
               )}
