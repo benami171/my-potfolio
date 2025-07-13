@@ -12,14 +12,11 @@ import {
   EnvelopeIcon,
   ArrowTopRightOnSquareIcon,
   PhoneIcon,
-  ArrowDownTrayIcon,
   ChevronDownIcon,
   ChevronUpIcon,
   DocumentArrowDownIcon
 } from '@heroicons/react/24/outline'
 import { ModeToggle } from './components/shared/ui/ModeToggle/ModeToggle'
-
-
 
 export default function Home() {
   const [isResumeExpanded, setIsResumeExpanded] = useState<boolean>(false);
