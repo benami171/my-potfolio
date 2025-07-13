@@ -6,9 +6,22 @@ import Link from 'next/link';
 import bridge_preview from '../public/images/bridge_preview.png';
 import ml_screenshot from '../public/images/ml_screenshot.png';
 import netcat_screenshot from '../public/images/netcat_screenshot.png';
+import {
+  MapPinIcon,
+  CodeBracketIcon,
+  EnvelopeIcon,
+  ArrowTopRightOnSquareIcon,
+  PhoneIcon,
+  ArrowDownTrayIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  DocumentArrowDownIcon
+} from '@heroicons/react/24/outline'
+import { ModeToggle } from './components/shared/ui/ModeToggle/ModeToggle'
+
+
 
 export default function Home() {
-
   const [isResumeExpanded, setIsResumeExpanded] = useState<boolean>(false);
   const toggleResume = () => setIsResumeExpanded(prev => !prev);
 
@@ -18,12 +31,13 @@ export default function Home() {
       <nav className="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-10 py-4 border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <span className="text-xl font-bold text-blue-600">Gal Ben Ami</span>
-          <div className="flex gap-6">
+          <div className="flex items-center gap-6">
             <Link href="#about" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">About</Link>
             <Link href="#education" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Education</Link>
             <Link href="#projects" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Projects</Link>
             <Link href="#skills" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Skills</Link>
             <Link href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500">Contact</Link>
+            <ModeToggle />
           </div>
         </div>
       </nav>
@@ -95,9 +109,8 @@ export default function Home() {
           </h2>
           <div className="max-w-3xl mx-auto">
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-              Motivated Computer Science student with a solid foundation in object-oriented programming, algorithms, and software development. Experienced in full-stack development. Available for full-time work.            </p>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
-              I'm passionate about building efficient, scalable applications and continuously expanding my knowledge in various programming languages and frameworks. I enjoy tackling complex problems and creating elegant solutions.
+              Motivated Computer Science student with a Can-Do attitude looking to gain experience in full-stack development.
+              Currently working on improving my skills in web development.
             </p>
           </div>
         </div>
@@ -130,7 +143,7 @@ export default function Home() {
               <li>Network Programming</li>
             </ul>
             <p className="text-gray-700 dark:text-gray-300">
-              GPA: 85 / 100
+              GPA: 86.2
             </p>
           </div>
         </div>
@@ -181,11 +194,11 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/* Project 3 - With Architecture Diagram */}
+            {/* Project 3 - With Architecture Diagram Instead of Screenshot from the terminal.. */}
             <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
               <div className="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 230" className="h-full">
-                  {/* Simple architecture diagram */}
+
                   <rect x="50" y="20" width="120" height="50" rx="5" fill="#4B5563" stroke="#60A5FA" strokeWidth="2" />
                   <text x="110" y="50" fontSize="14" textAnchor="middle" fill="white">Client</text>
 
@@ -229,14 +242,14 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="flex gap-4">
-                  <a
+                  <Link
                     href="https://github.com/benami171/Pipeline_Leader-follower"
                     className="text-blue-600 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     GitHub
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -276,14 +289,14 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="flex gap-4">
-                  <a
+                  <Link
                     href="https://github.com/benami171/os_exe2/tree/master"
                     className="text-blue-600 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     GitHub
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -319,18 +332,18 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="flex gap-4">
-                  <a
+                  <Link
                     href="https://github.com/benami171/ML_FinalProject/tree/main"
                     className="text-blue-600 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     GitHub
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
-            {/* Project 4 - With Code Snippet */}
+            {/* Project 4 - Instead of a screenshot I used a code-font text which was took from inside the project's code as a Snippet */}
             <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-800">
               <div className="h-48 bg-gray-800 overflow-hidden">
                 <div className="p-3 h-full overflow-hidden">
@@ -390,14 +403,14 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="flex gap-4">
-                  <a
+                  <Link
                     href="https://github.com/benami171/QUIC_Multi_Streams"
                     className="text-blue-600 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     GitHub
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -499,10 +512,6 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-2 text-gray-900 dark:text-white">
             Resume
           </h2>
-          {/* state that its a short version */}
-          <span className="text-gray-600 dark:text-gray-300 text-center block mb-8">
-            This is a short version of my resume. Click the button below to download the full resume.
-          </span>
 
           <div className="max-w-4xl mx-auto ">
             <div
@@ -516,16 +525,14 @@ export default function Home() {
                   <p className="text-lg text-gray-700 dark:text-gray-300">Computer Science Student</p>
                 </div>
 
-                <a
+                <Link
                   href="/api/download-resume/"
                   className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center gap-2"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                  Download Full Resume
-                </a>
+                  Full Resume Here
+                  <DocumentArrowDownIcon className="h-5 w-5" />
+                </Link>
               </div>
 
               {/* Clickable Preview Area */}
@@ -536,10 +543,21 @@ export default function Home() {
               >
                 {/* Resume Content */}
                 <div className="mb-8">
-                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Profile</h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Motivated Computer Science student with a solid foundation in object-oriented programming, algorithms, and software development. Experienced in full-stack development. Available for full-time work.
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Work Experience</h4>
+                  <h5 className="text-lg font-medium text-gray-900 dark:text-white">Full stack Developer | Freelance</h5>
+                  <p className="text-gray-700 dark:text-gray-300 italic mb-2">
+                    2024 - Present
                   </p>
+                  <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300 space-y-2 max-w-xl">
+                    <li>Migrating the Israeli Bridge Federation’s legacy site into a Next.js + React web app serving ~6,000 active members.</li>
+                    <li>Built Core Modules: Secured Payments Flow, Tournaments registration, and A role-based management dashboard.</li>
+                    <li>
+                      Tech Stack:{" "}
+                      <span className="font-bold dark:text-white">
+                        Next.js, React, Prisma, Tailwind CSS, TypeScript.
+                      </span>
+                    </li>
+                  </ul>
                 </div>
 
                 <div className="mb-8">
@@ -552,35 +570,7 @@ export default function Home() {
                       </div>
                       <p className="text-gray-600 dark:text-gray-400">2022 - 2026</p>
                     </div>
-                    <p className="text-gray-700 dark:text-gray-300 mt-2">GPA: 85/100</p>
-                  </div>
-                </div>
-
-                <div className="mb-8">
-                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Projects</h4>
-
-                  <div className="mb-4">
-                    <div className="flex justify-between items-start">
-                      <h5 className="text-lg font-medium text-gray-900 dark:text-white">Israel Bridge Federation</h5>
-                      <p className="text-blue-600 italic">Currently in progress</p>
-                    </div>
-                    <p className="text-gray-700 dark:text-gray-300 mt-1">
-                      Developing IBF's brand-new website (frontend & backend) using Next.js, Prisma, Tailwind CSS, and TypeScript.
-                    </p>
-                  </div>
-
-                  <div className="mb-4">
-                    <h5 className="text-lg font-medium text-gray-900 dark:text-white">QUIC multi streams (Python)</h5>
-                    <p className="text-gray-700 dark:text-gray-300 mt-1">
-                      Asynchronous multi-stream QUIC functionality with dynamic frame management, leveraging asyncio for concurrent operations.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h5 className="text-lg font-medium text-gray-900 dark:text-white">System Design Patterns (C++)</h5>
-                    <p className="text-gray-700 dark:text-gray-300 mt-1">
-                      A multi-threaded server using Pipeline and Leader-Follower concurrency patterns to efficiently handle operations over TCP. Optimized performance and scalability with thread synchronization and resource management.
-                    </p>
+                    <p className="text-gray-700 dark:text-gray-300 mt-2">GPA: 86.2</p>
                   </div>
                 </div>
 
@@ -599,10 +589,7 @@ export default function Home() {
                 {!isResumeExpanded && (
                   <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white dark:from-blue-950 to-transparent flex items-end justify-center">
                     <button className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                      Click to Expand
+                    <ChevronDownIcon className="h-5 w-5" />
                     </button>
                   </div>
                 )}
@@ -615,10 +602,7 @@ export default function Home() {
                     onClick={toggleResume}
                     className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition flex items-center gap-2"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                    </svg>
-                    Collapse Resume
+                  <ChevronUpIcon className="h-5 w-5" />
                   </button>
                 </div>
               )}
@@ -638,7 +622,7 @@ export default function Home() {
               e.preventDefault();
               const form = e.target as HTMLFormElement;
               const formData = new FormData(form);
-              
+
               try {
                 const response = await fetch('/api/send', {
                   method: 'POST',
@@ -674,10 +658,10 @@ export default function Home() {
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Email
+                  Your Email
                 </label>
                 <input
                   type="email"
@@ -687,7 +671,7 @@ export default function Home() {
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                   Message
@@ -700,7 +684,7 @@ export default function Home() {
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                 ></textarea>
               </div>
-              
+
               <button
                 type="submit"
                 className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200"
@@ -712,65 +696,55 @@ export default function Home() {
             {/* Contact Information */}
             <div className="flex flex-col gap-6">
               <div className="flex items-center gap-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <a
+                <PhoneIcon className="h-6 w-6 text-blue-600" />
+                <Link
                   href="tel:050-958-4324"
                   className="text-blue-600 hover:text-blue-700 transition"
                 >
                   050-958-4324
-                </a>
+                </Link>
               </div>
 
               <div className="flex items-center gap-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <a
+                <EnvelopeIcon className="h-6 w-6 text-blue-600" />
+                <Link
                   href="mailto:benami171@gmail.com"
                   className="text-blue-600 hover:text-blue-700 transition"
                 >
                   benami171@gmail.com
-                </a>
+                </Link>
               </div>
 
               <div className="flex items-center gap-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span className="text-gray-700 dark:text-gray-300">
+                <MapPinIcon className="h-6 w-6 text-blue-600" />
+                <span className="text-blue-600">
                   Petah Tikva, Israel
                 </span>
               </div>
 
               <div className="flex items-center gap-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-                <a
+                <ArrowTopRightOnSquareIcon className="h-6 w-6 text-blue-600" />
+                <Link
                   href="https://www.linkedin.com/in/gal1-ben7-ami1/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-700 transition"
                 >
                   LinkedIn
-                </a>
+                </Link>
               </div>
 
               <div className="flex items-center gap-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-                <a
+                <CodeBracketIcon className="h-6 w-6 text-blue-600" />
+
+                <Link
                   href="https://github.com/benami171"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-700 transition"
                 >
                   Github
-                </a>
+                </Link>
               </div>
             </div>
 
